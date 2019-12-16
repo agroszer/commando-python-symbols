@@ -42,8 +42,15 @@
                 name = name.substring(1, colplace);
               }
 
-              if (query != "" && name.indexOf(query) == -1)
-                  continue;
+              if (query != "") {
+                if (query.toLowerCase() == query) {
+                    // all lowercase query, ignore case
+                    if (name.toLowerCase().indexOf(query) == -1) continue;
+                } else {
+                    // match case
+                    if (name.indexOf(query) == -1) continue;
+                }
+              }
 
               results.push({
                   id: id,
